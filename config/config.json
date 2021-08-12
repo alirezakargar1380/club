@@ -1,0 +1,29 @@
+{
+  "development": {
+    "url": "postgres://postgres:Codename48@localhost:5432/club",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "test": {
+    "url": "postgres://postgres:Codename48@localhost:5432/club",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "staging": {
+    "url": "postgres://postgres:Codename48@localhost:5432/club",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "production": {
+    "url": "postgres://postgres:Codename48@localhost:5432/club",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "server": {
+    "url": "postgres://negarest_admin:AAaa!#&)1370@localhost:5432/negarest_club",
+    "dialect": "postgres",
+    "logging": false
+  }
+}
+
+

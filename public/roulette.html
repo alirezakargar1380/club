@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>roulette</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row ">
+      <div id="roulette-section" class="card  col-md-6 col-sm-12">
+        <div class=" card-body ">
+          <div class="alert alert-primary text-center" role="alert"><strong> گردونه</strong></div>
+          <div class="mb-3">
+            <label for="title" class="form-label"> title</label>
+            <input type="text" class="form-control" id="title" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">description</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+          </div>
+
+
+          <div class="mb-3">
+            <label for="percentFake" class="form-label">percent fake</label>
+            <input type="number" class="form-control" id="percentFake" min="0" max="100" value="30" placeholder="0">
+          </div>
+
+
+          <div class="mb-3">
+            <label for="ticketPrice" class="form-label">ticketPrice</label>
+            <input type="number" class="form-control" id="ticketPrice">
+          </div>
+          <div class="mb-3">
+            <label for="ticketPriceDiamond" class="form-label">ticketPriceDiamond</label>
+            <input type="number" class="form-control" id="ticketPriceDiamond">
+          </div>
+
+          <div class="mb-3">
+            <label for="adPrice" class="form-label">adPrice</label>
+            <input type="number" class="form-control" id="adPrice">
+          </div>
+          <div class="mb-3">
+            <label for="adPriceDiamond" class="form-label">adPriceDiamond</label>
+            <input type="number" class="form-control" id="adPriceDiamond">
+          </div>
+
+          <div class="mb-3">
+            <label for="adPriceAfterWin" class="form-label">adPriceAfterWin</label>
+            <input type="number" class="form-control" id="adPriceAfterWin">
+          </div>
+          <div class="mb-3">
+            <label for="adPriceDiamondAfterWin" class="form-label">adPriceDiamondAfterWin</label>
+            <input type="number" class="form-control" id="adPriceDiamondAfterWin">
+          </div>
+
+          <div class="mb-3">
+            <label for="adPriceForDays" class="form-label">adPriceForDays</label>
+            <input type="number" class="form-control" id="adPriceForDays">
+          </div>
+          <div class="mb-3">
+            <label for="adPriceDiamondForDays" class="form-label">adPriceDiamondForDays</label>
+            <input type="number" class="form-control" id="adPriceDiamondForDays">
+          </div>
+
+          <div class="mb-3">
+            <label for="fromDate" class="form-label">from date</label>
+            <input type="text" class="form-control" placeholder="from date" id="fromDate">
+          </div>
+
+          <div class="mb-3">
+            <label for="countDay" class="form-label">to date</label>
+            <input type="text" class="form-control" placeholder="countDay" id="countDay">
+          </div>
+
+          <button type="button" onclick="sendRoulette()" class="btn btn-primary mx-auto">ثبت</button>
+
+          <div class="row" style="overflow-y: auto;">
+            <table class="table col-12 ">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">title</th>
+                  <th scope="col">description</th>
+                  <th scope="col">ticketPrice</th>
+                  <th scope="col">ticketPriceDiamond</th>
+                  <th scope="col">adPrice</th>
+                  <th scope="col">adPriceDiamond</th>
+                  <th scope="col">adPriceForDays</th>
+                  <th scope="col">adPriceDiamondForDays</th>
+                  <th scope="col">adPriceAfterWin</th>
+                  <th scope="col">adPriceDiamondAfterWin</th>
+                  <th scope="col">fromDate</th>
+                  <th scope="col">countDay</th>
+                  <th scope="col">percentFake</th>
+                  <th scope="col">image</th>
+                  <th scope="col">function</th>
+                </tr>
+              </thead>
+              <tbody id="body">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="ticket-section" class="card  col-md-6 col-sm-12 " style="visibility: hidden;">
+        <div class=" card-body ">
+          <div class="alert alert-primary text-center" role="alert"><strong> بلیط</strong></div>
+          <div class="mb-3">
+            <label for="titleTicket" class="form-label"> title</label>
+            <input type="text" class="form-control" id="titleTicket" placeholder="title">
+          </div>
+          <div class="mb-3">
+            <label for="descriptionTicket" class="form-label">description</label>
+            <textarea class="form-control" id="descriptionTicket" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="countTicket" class="form-label"> count</label>
+            <input type="number" class="form-control" id="countTicket" placeholder="count">
+          </div>
+          <button type="button" onclick="sendTicket()" class="btn btn-primary mx-auto">ثبت</button>
+          <div class="row">
+            <table class="table col-12">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">title</th>
+                  <th scope="col">description</th>
+                  <th scope="col">prizeId</th>
+                  <th scope="col">used</th>
+                </tr>
+              </thead>
+              <tbody id="bodyTicket">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="prize-section" class="card  col-md-5 col-sm-12 m-2" style="visibility: hidden;">
+        <div class="   card-body ">
+          <div class="alert alert-primary text-center" role="alert"><strong> جوایز</strong></div>
+          <div class="mb-3">
+            <label for="titlePrize" class="form-label"> title Prize</label>
+            <input type="text" class="form-control" id="titlePrize" placeholder="title">
+          </div>
+          <div class="mb-3">
+            <label for="descriptionPrize" class="form-label">description Prize</label>
+            <textarea class="form-control" id="descriptionPrize" rows="3"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="countPrize" class="form-label">count Prize</label>
+            <input type="number" class="form-control" id="countPrize" placeholder="0">
+          </div>
+
+          <div class="mb-3">
+            <label for="percentChance" class="form-label">percent chance</label>
+            <input type="number" class="form-control" id="percentChance" min="1" placeholder="0">
+          </div>
+
+          <div class="mb-3">
+            <label for="prizeDatePicker" class="form-label">prizeDatePicker</label>
+            <input type="text" id="prizeDatePicker" class="form-control date" placeholder="Pick the multiple dates">
+          </div>
+
+          <div class="mb-3">
+            <label for="prizeTimePicker" class="form-label">prizeTimePicker</label>
+            <input type="text" class="form-control" placeholder="timepicker" id="prizeTimePicker">
+          </div>
+           
+          <div class="mb-3">
+            <label for="sequential" class="form-label">sequential</label>
+            <input type="checkbox"  placeholder="timepicker" id="sequential">
+          </div>
+          <!-- <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="multiOwnerPrize">
+            <label class="form-check-label" for="multiOwnerPrize">
+              اشتراک با دیگران
+            </label>
+          </div>
+
+          <div  class="mb-3">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            انتخاب کنید
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="fieldSharedPrize">
+              
+            
+                </ul>
+              </div>
+            <label class="form-check-label" for="fieldSharedPrize">
+             زمینه
+            </label>
+          </div> -->
+
+          <button type="button" onclick="sendPrize()" class="btn btn-primary mx-auto">ثبت</button>
+
+          <div class="row">
+            <table class="table col-12">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">title</th>
+                  <th scope="col">description</th>
+                  <th scope="col">runDate</th>
+                  <th scope="col">runTime</th>
+                  <th scope="col">statusPay</th>
+                  <th scope="col">sequential</th>
+                  <th scope="col">image</th>
+                  <th scope="col">lotteryId</th>
+                </tr>
+              </thead>
+              <tbody id="bodyPrize">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="./roulette.js"></script>
+  <script>
+
+
+    $(document).ready(function () {
+
+      $("#fromDate").datepicker();
+      $("#toDate").datepicker();
+      $('#timepicker').timepicker({
+        multidate: true
+      });
+
+      $('.date').datepicker({
+        multidate: false,
+        format: 'dd-mm-yyyy'
+      });
+
+      $('#prizeTimePicker').timepicker({
+        timeFormat: 'hh:00 a'
+      });
+    });
+  </script>
+</body>
+
+</html>
